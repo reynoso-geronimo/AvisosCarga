@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avisos</title>
+    <STyle>
+        .table{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+    </STyle>
+  </head>
+  <body class="table">
+    <table  >
+      <tr >
+        <th>LEGAJO</th>
+        <th>ULTIMO AVISO</th>
+        <th>ADUANA</th>
+        <th>LOCALIDAD</th>
+        <th>DIRECCION</th>
+        <th>PROXIMO AIVSO</th>
+        <TH>ESTADO</TH>
+        <th>ACCIONES</th>
+      </tr>
+      <% permisos.forEach(permiso => { %>
+        <tr>
+            <td><%- permiso.permiso %></td>
+            <td><%- permiso.ultimoAviso %></td>
+            <td><%- permiso.aduana %></td>
+            <td><%- permiso.localidad %></td>
+            <td><%- permiso.direccion %></td>
+            <td><%- permiso.proximoAviso %></td>
+            <td><%- permiso.estado %></td>
+            
+            <td><button>X</button><button>EDITAR</button></td>
+          </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>
