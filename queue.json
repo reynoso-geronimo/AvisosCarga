@@ -1,0 +1,37 @@
+[
+  {
+    "permiso": "23060ec0102212",
+    "aduana": "28",
+    "localidad": "san pedro",
+    "direccion": "25 de mayo 2630",
+    "proximoAviso": "2023-06-30T07:00"
+  },
+  {
+    "permiso": "23060ec0102212",
+    "aduana": "060",
+    "localidad": "san pedro",
+    "direccion": "CALLE FALSA 321",
+    "proximoAviso": "2023-06-28T23:23"
+  },
+  {
+    "permiso": "23008ec01001200s",
+    "aduana": "008",
+    "localidad": "CAMPANA",
+    "direccion": "CALLE FALSA 321",
+    "proximoAviso": "2022-05-13T14:46"
+  },
+  {
+    "permiso": "23060ec0102212c",
+    "aduana": "11",
+    "localidad": "san pedro",
+    "direccion": "25 de mayo 2630",
+    "proximoAviso": "2022-05-15T17:48"
+  },
+  {
+    "permiso": "23060ec0102212c",
+    "aduana": "11",
+    "localidad": "san pedro",
+    "direccion": "25 de mayo 2630",
+    "proximoAviso": "2022-05-15T17:48"
+  }
+]

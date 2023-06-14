@@ -13,7 +13,9 @@
         }
     </STyle>
   </head>
-  <body class="table">
+  <body >
+    <a href="/nuevo"><BUTton>NUEVO PERMISO</BUTton></a>
+    <section class="table">
     <table  >
       <tr >
         <th>LEGAJO</th>
@@ -39,5 +41,34 @@
           </tr>
       <% }) %>
     </table>
+  </section>
+  <h1>ESPERANDO A SER CARGADOS</h1>
+  <section class="table">
+    <table  >
+      <tr >
+        <th>LEGAJO</th>
+        
+        <th>ADUANA</th>
+        <th>LOCALIDAD</th>
+        <th>DIRECCION</th>
+        <th>PROXIMO AIVSO</th>
+        
+      </tr>
+      <% queue.forEach(permiso => { %>
+        <tr>
+            <td><%- permiso.permiso %></td>
+            
+            <td><%- permiso.aduana %></td>
+            <td><%- permiso.localidad %></td>
+            <td><%- permiso.direccion %></td>
+            <td><%- permiso.proximoAviso %></td>
+          
+            
+            
+          </tr>
+      <% }) %>
+    </table>
+  </section>
+
   </body>
 </html>
