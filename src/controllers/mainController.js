@@ -13,9 +13,9 @@ module.exports = {
     },
     agregar:(req,res)=>{
      
-      
-        queue= [...queue,req.body]
-        fs.writeFileSync(path.resolve(__dirname, "../../queue.json"),JSON.stringify(queue),null,2)
+        let nuevoPe ={...req.body,  ultimoAviso:null , estado:null}
+        queue= [...queue,nuevoPe]
+        fs.writeFileSync(path.resolve(__dirname, "../../queue.json"),JSON.stringify(queue,null,2))
         res.redirect("/")
     }
 }
