@@ -12,18 +12,18 @@
   </head>
   <body >
     <a href="/"><BUTton>VOLVER</BUTton></a>
-    <form class="form-nuevo" action="/nuevo" method="post">
+    <form class="form-nuevo" action="/editar/<%= permiso.permiso %>" method="post">
     <label for="permiso">PERMISO</label>
-    <input type="text" name="permiso" id="permiso" />
+    <input type="text" name="permiso" id="permiso" value="<%= permiso.permiso %>"/>
     <label for="aduana">ADUANA</label>
-    <input type="number" name="aduana" id="aduana" />
+    <input type="number" name="aduana" id="aduana" value="<%= permiso.aduana %>"/>
     <label for="localidad">LOCALIDAD</label>
-    <input type="text" name="localidad" id="localidad" />
+    <input type="text" name="localidad" id="localidad" value="<%= permiso.localidad %>"/>
     <label for="direccion">DIRECCION</label>
-    <input type="text" name="direccion" id="direccion" />
+    <input type="text" name="direccion" id="direccion" value="<%= permiso.direccion %>"/>
     <label for="proximoAviso">PROXIMO AVISO</label>
-    <input type="datetime-local" name="proximoAviso" id="proximoAviso" />
-    <button type="submit">Agregar</button>
+    <input type="datetime-local" name="proximoAviso" id="proximoAviso" value="<%= permiso.proximoAviso %>"/>
+    <button type="submit">EDITAR</button>
   </form>
   </body>
 </html>

@@ -1,74 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Avisos</title>
     <STyle>
-        .table{
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-        }
+      *{ margin: 0; } #tabla { font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse; width: 100%; } #tabla td, #tabla th { border:
+      1px solid #ddd; padding: 8px; } #tabla
+      tr:nth-child(even){background-color: #f2f2f2;} #tabla tr:hover
+      {background-color: #ddd;} #tabla th { padding-top: 12px; padding-bottom:
+      12px; text-align: left; background-color: #04AA6D; color: white; position:
+      sticky; top: 0; border-top: none; }
     </STyle>
   </head>
-  <body >
-    <a href="/nuevo"><BUTton>NUEVO PERMISO</BUTton></a>
-    <section class="table">
-    <table  >
-      <tr >
-        <th>LEGAJO</th>
-        <th>ULTIMO AVISO</th>
-        <th>ADUANA</th>
-        <th>LOCALIDAD</th>
-        <th>DIRECCION</th>
-        <th>PROXIMO AIVSO</th>
-        <TH>ESTADO</TH>
-        <th>ACCIONES</th>
-      </tr>
-      <% permisos.forEach(permiso => { %>
+  <body>
+    <a href="/nuevo"><BUTton>NUEVO PERMISO</BUTton></a
+    ><a href="/baja"><BUTton>HISTORIAL</BUTton></a>
+    <section>
+      <table id="tabla">
         <tr>
-            <td><%- permiso.permiso %></td>
-            <td><%- permiso.ultimoAviso %></td>
-            <td><%- permiso.aduana %></td>
-            <td><%- permiso.localidad %></td>
-            <td><%- permiso.direccion %></td>
-            <td><%- permiso.proximoAviso %></td>
-            <td><%- permiso.estado %></td>
-            
-            <td><button>X</button><button>EDITAR</button></td>
-          </tr>
-      <% }) %>
-    </table>
-  </section>
-  <h1>ESPERANDO A SER CARGADOS</h1>
-  <section class="table">
-    <table  >
-      <tr >
-        <th>LEGAJO</th>
-        
-        <th>ADUANA</th>
-        <th>LOCALIDAD</th>
-        <th>DIRECCION</th>
-        <th>PROXIMO AIVSO</th>
-        
-      </tr>
-      <% queue.forEach(permiso => { %>
+          <th>LEGAJO</th>
+          <th>ULTIMO AVISO</th>
+          <th>ADUANA</th>
+          <th>LOCALIDAD</th>
+          <th>DIRECCION</th>
+          <th>PROXIMO AIVSO</th>
+          <TH>ESTADO</TH>
+          <th>ACCIONES</th>
+        </tr>
+        <% permisos.forEach(permiso => { %>
         <tr>
-            <td><%- permiso.permiso %></td>
-            
-            <td><%- permiso.aduana %></td>
-            <td><%- permiso.localidad %></td>
-            <td><%- permiso.direccion %></td>
-            <td><%- permiso.proximoAviso %></td>
-          
-            
-            
-          </tr>
-      <% }) %>
-    </table>
-  </section>
+          <td><%- permiso.permiso %></td>
+          <td><%- permiso.ultimoAviso %></td>
+          <td><%- permiso.aduana %></td>
+          <td><%- permiso.localidad %></td>
+          <td><%- permiso.direccion %></td>
+          <td><%- permiso.proximoAviso %></td>
+          <td><%- permiso.estado %></td>
 
+          <td>
+            <form
+              onsubmit="return confirm('SEGURO QUE QUIERES BORRAR EL PERMISO <%= permiso.permiso %>');"
+              action="/eliminar/<%= permiso.permiso %>"
+              method="post"
+            >
+              <button type="submit">ELIMINAR</button>
+            </form>
+            <a href="/editar/<%= permiso.permiso %>"><button>EDITAR</button></a>
+          </td>
+        </tr>
+        <% }) %>
+      </table>
+    </section>
   </body>
 </html>
