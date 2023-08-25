@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const db = require("../database/models")
 
 const leerPermisos = () => JSON.parse(fs.readFileSync(path.resolve(__dirname, "../../permisos.json"), "utf-8"))
 
@@ -10,12 +11,13 @@ const escribirPermisos = (permisos) => fs.writeFileSync(path.resolve(__dirname, 
 
 
 module.exports = {
-    index: (req, res) => {
-        const permisos = leerPermisos().filter(permiso=>permiso.estado!="BAJA")
-        permisos.forEach(permiso => {
-            permiso.proximoAviso= new Date(permiso.proximoAviso).toLocaleString("en-gb")
+    index: async (req, res) => {
+        // const permisos = leerPermisos().filter(permiso=>permiso.estado!="BAJA")
+        // permisos.forEach(permiso => {
+        //     permiso.proximoAviso= new Date(permiso.proximoAviso).toLocaleString("en-gb")
             
-        });
+        // });
+        const permisos = await db.Avisos.findAll()
         return res.render("index", { permisos: permisos })
     },
     baja: (req, res) => {
@@ -25,11 +27,13 @@ module.exports = {
     nuevo: (req, res) => {
         return res.render("nuevo")
     },
-    agregar: (req, res) => {
-        let nuevoPe = { ...req.body,proximoAviso:new Date(req.body.proximoAviso), ultimoAviso: null, estado: null }
-        let permisos = [...leerPermisos(), nuevoPe]
+    agregar:async (req, res) => {
+        // let nuevoPe = { ...req.body,proximoAviso:new Date(req.body.proximoAviso), ultimoAviso: null, estado: null }
+        // let permisos = [...leerPermisos(), nuevoPe]
 
-        escribirPermisos(permisos)
+        // escribirPermisos(permisos)
+        console.log(req.body)
+        await db.Avisos.create(req.body)
         return res.redirect("/")
     },
     editarForm: (req, res) => {

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router()
 const mainController = require('../controllers/mainController.js');
+const apiController = require('../controllers/apiController.js');
 
 router.get("/", mainController.index);
 router.get("/baja", mainController.baja);
@@ -14,5 +15,10 @@ router.post("/activar/:permiso", mainController.activar);
 
 
 router.get("/permisos", mainController.permisos);
+
+
+//api
+
+router.get("/api/proximo", apiController.proximo)
 
 module.exports = router
