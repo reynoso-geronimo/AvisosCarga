@@ -5,14 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Avisos</title>
-    <STyle>
-      .form-nuevo{ display: flex; flex-direction: column;width:100vw;align-items: center;padding-top: 100px;}
-      .form-nuevo input{margin-bottom: 10px;width:300px}
-    </STyle>
+    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body >
     <a href="/"><BUTton>VOLVER</BUTton></a>
-    <form class="form-nuevo" action="/editar/<%= permiso.permiso %>" method="post">
+    <form class="form-nuevo" action="/editar/<%= permiso.id %>" method="post">
     <label for="permiso">PERMISO</label>
     <input type="text" name="permiso" id="permiso" value="<%= permiso.permiso %>"/>
     <label for="aduana">ADUANA</label>

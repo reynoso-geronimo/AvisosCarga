@@ -5,15 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Avisos</title>
-    <STyle>
-      *{ margin: 0; } #tabla { font-family: Arial, Helvetica, sans-serif;
-      border-collapse: collapse; width: 100%; } #tabla td, #tabla th { border:
-      1px solid #ddd; padding: 8px; } #tabla
-      tr:nth-child(even){background-color: #f2f2f2;} #tabla tr:hover
-      {background-color: #ddd;} #tabla th { padding-top: 12px; padding-bottom:
-      12px; text-align: left; background-color: #04AA6D; color: white; position:
-      sticky; top: 0; border-top: none; }
-    </STyle>
+    <link rel="stylesheet" href="/css/style.css">
+   
   </head>
   <body>
     <a href="/nuevo"><BUTton>NUEVO PERMISO</BUTton></a
@@ -26,29 +19,29 @@
           <th>ADUANA</th>
           <th>LOCALIDAD</th>
           <th>DIRECCION</th>
-          <th>PROXIMO AIVSO</th>
+          <th>PROXIMO AVISO</th>
           <TH>ESTADO</TH>
           <th>ACCIONES</th>
         </tr>
         <% permisos.forEach(permiso => { %>
         <tr>
           <td><%- permiso.permiso %></td>
-          <td><%- permiso.ultimoAviso %></td>
+          <td><%= permiso.ultimoAviso&&permiso.ultimoAviso.toLocaleString() %></td>
           <td><%- permiso.aduana %></td>
           <td><%- permiso.localidad %></td>
           <td><%- permiso.direccion %></td>
-          <td><%- permiso.proximoAviso %></td>
+          <td><%= permiso.proximoAviso.toLocaleString()  %>  </td>
           <td><%- permiso.estado %></td>
 
           <td>
             <form
               onsubmit="return confirm('SEGURO QUE QUIERES BORRAR EL PERMISO <%= permiso.permiso %>');"
-              action="/eliminar/<%= permiso.permiso %>"
+              action="/eliminar/<%= permiso.id %>"
               method="post"
             >
               <button type="submit">ELIMINAR</button>
             </form>
-            <a href="/editar/<%= permiso.permiso %>"><button>EDITAR</button></a>
+            <a href="/editar/<%= permiso.id %>"><button>EDITAR</button></a>
           </td>
         </tr>
         <% }) %>

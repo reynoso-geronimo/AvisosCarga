@@ -28,27 +28,25 @@ module.exports = {
         return res.render("nuevo")
     },
     agregar:async (req, res) => {
-        // let nuevoPe = { ...req.body,proximoAviso:new Date(req.body.proximoAviso), ultimoAviso: null, estado: null }
-        // let permisos = [...leerPermisos(), nuevoPe]
-
-        // escribirPermisos(permisos)
-        console.log(req.body)
+        
+       try {
         await db.Avisos.create(req.body)
         return res.redirect("/")
+       } catch (error) {
+        
+       }
     },
-    editarForm: (req, res) => {
-        return res.render("editar", { permiso: leerPermisos().find(permiso => permiso.permiso == req.params.permiso) })
+    editarForm: async (req, res) => {
+       try {
+        const permiso = await db.Avisos.findByPk(req.params.permiso) 
+        console.log(permiso)
+        return res.render("editar", { permiso: permiso})
+       } catch (error) {
+        
+       }
     },
     editar: (req, res) => {
-        const permisos = leerPermisos()
-        const permisoEliminar = permisos.find(permiso => permiso.permiso == req.params.permiso);
-        permisoEliminar.permiso = req.body.permiso
-        permisoEliminar.aduana = req.body.aduana
-        permisoEliminar.localidad = req.body.localidad
-        permisoEliminar.direccion = req.body.direccion
-        permisoEliminar.proximoAviso = req.body.proximoAviso
-        
-        escribirPermisos(permisos)
+        //TODO
 
         return res.redirect("/")
     },
@@ -56,10 +54,8 @@ module.exports = {
 
     eliminar: (req, res) => {
         const permisos = leerPermisos()
-        const permisoEliminar = permisos.find(permiso => permiso.permiso == req.params.permiso);
-        permisoEliminar.estado = "BAJA"
-        
-        escribirPermisos(permisos)
+        console.log(req.params.permiso)
+        db.Avisos.destroy({where:{id:req.params.permiso}})
 
         return res.redirect("/")
     },
