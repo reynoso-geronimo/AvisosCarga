@@ -4,7 +4,8 @@
 <%- include('./partials/head') %>
 
 <body>
-  <a href="/nuevo"><BUTton>NUEVO PERMISO</BUTton></a><a href="/historial"><BUTton>HISTORIAL</BUTton></a>
+  <main class="main">
+    <%- include('./partials/nav') %>
   <section>
     <table id="tabla">
       <tr>
@@ -53,6 +54,7 @@
         <% }) %>
     </table>
   </section>
+</main>
   <script src="/js/index.js"></script>
 </body>
 
