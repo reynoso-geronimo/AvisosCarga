@@ -64,6 +64,9 @@ module.exports = (sequelize, dataTypes) => {
         console.log("Deleting record");
         Aviso.emitChange({ event: "delete", aviso });
     });
-
+    Aviso.afterBulkRestore((aviso, options) => {
+        console.log("Restoring record");
+        Aviso.emitChange({ event: "restore", aviso });
+    }) 
     return Aviso;
 }
