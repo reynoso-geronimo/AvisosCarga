@@ -18,9 +18,7 @@ module.exports = (sequelize, dataTypes) => {
         localidad: {
             type: dataTypes.STRING
         },
-        direccion: {
-            type: dataTypes.STRING
-        },
+       
         proximoAviso: {
             type: dataTypes.DATE
         
@@ -36,8 +34,36 @@ module.exports = (sequelize, dataTypes) => {
     }
 
     const Aviso = sequelize.define(alias, cols, config);
+  
 
+     // Aquí agrega la lógica para enviar eventos SSE
+     const changeListeners = [];
     
+     Aviso.addChangeListener = (listener) => {
+         changeListeners.push(listener);
+     }
+ 
+     Aviso.emitChange = (change) => {
+         changeListeners.forEach((listener) => {
+             listener(change);
+         });
+     }
+ 
+     // Observa los cambios en la base de datos y emite eventos SSE
+     Aviso.afterCreate((aviso, options) => {
+        console.log("Creating record");
+        Aviso.emitChange({ event: "create", aviso });
+    });
+    
+    Aviso.afterBulkUpdate((aviso, options) => {
+        console.log("Updating record");
+        Aviso.emitChange({ event: "update", aviso });
+    });
+    
+    Aviso.afterBulkDestroy((aviso, options) => {
+        console.log("Deleting record");
+        Aviso.emitChange({ event: "delete", aviso });
+    });
 
     return Aviso;
 }
