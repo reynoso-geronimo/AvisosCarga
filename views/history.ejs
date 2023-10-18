@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('./partials/head') %>
+
+<body>
+
+  <section>
+    <table id="tabla">
+      <tr>
+        <th>LEGAJO</th>
+        <th>ULTIMO AVISO</th>
+        <th>ADUANA</th>
+        <th>LOCALIDAD</th>
+        <th>DIRECCION</th>
+        <th>PROXIMO AVISO</th>
+        <TH>ESTADO</TH>
+        <TH>ELIMINADO</TH>
+        <th>ACCIONES</th>
+      </tr>
+      <% permisos.forEach(permiso=> { %>
+        <tr>
+          <td><%- permiso.permiso %></td>
+          <td>
+            <%= permiso.ultimoAviso&&permiso.ultimoAviso.toLocaleString() %>
+          </td>
+          <td><%- permiso.aduana %></td>
+          <td><%- permiso.localidad %></td>
+          <td><%- permiso.direccion %></td>
+          <td>
+            <%= permiso.proximoAviso.toLocaleString() %>
+          </td>
+          <td><%- permiso.estado %></td>
+          <td>
+            <%= permiso.deletedAt&&permiso.deletedAt.toLocaleString() %>
+          </td>
+          <td>
+            <a href="/restore/<%= permiso.id %>" class="btn-edit-a">
+              <button class="noselect btn-action btn-edit">
+                <span class="text">Restaurar</span>
+                <span class="icon">
+                  <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="bevel">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </a>
+          </td>
+        </tr>
+        <% }) %>
+    </table>
+  </section>
+</body>
+
+</html>

@@ -1,78 +1,65 @@
-const fs = require('fs');
-const path = require('path');
 const db = require("../database/models")
-
-const leerPermisos = () => JSON.parse(fs.readFileSync(path.resolve(__dirname, "../../permisos.json"), "utf-8"))
-
-const escribirPermisos = (permisos) => fs.writeFileSync(path.resolve(__dirname, "../../permisos.json"), JSON.stringify(permisos, null, 2))
-
-
-
-
 
 module.exports = {
     index: async (req, res) => {
-        // const permisos = leerPermisos().filter(permiso=>permiso.estado!="BAJA")
-        // permisos.forEach(permiso => {
-        //     permiso.proximoAviso= new Date(permiso.proximoAviso).toLocaleString("en-gb")
-            
-        // });
         const permisos = await db.Avisos.findAll()
         return res.render("index", { permisos: permisos })
     },
-    baja: (req, res) => {
-        const permisos = leerPermisos().filter(permiso=>permiso.estado=="BAJA")
-        return res.render("baja", { permisos: permisos })
+    history: async (req, res) => {
+        const permisosBorrados = await db.Avisos.findAll({
+            paranoid: false,
+            where: { deletedAt: { [db.Sequelize.Op.ne]: null } } 
+        });
+        return res.render("history", { permisos: permisosBorrados })
     },
-    nuevo: (req, res) => {
-        return res.render("nuevo")
+    new: (req, res) => {
+        return res.render("new")
     },
-    agregar:async (req, res) => {
-        
-       try {
-        await db.Avisos.create(req.body)
-        return res.redirect("/")
-       } catch (error) {
-        
-       }
+    agregar: async (req, res) => {
+
+        try {
+            await db.Avisos.create(req.body)
+            return res.redirect("/")
+        } catch (error) {
+
+        }
     },
     editarForm: async (req, res) => {
-       try {
-        const permiso = await db.Avisos.findByPk(req.params.permiso) 
-        console.log(permiso)
-        return res.render("editar", { permiso: permiso})
-       } catch (error) {
-        
-       }
-    },
-    editar: (req, res) => {
-        //TODO
+        try {
 
+            const permiso = await db.Avisos.findByPk(req.params.permiso)
+
+            return res.render("editar", { permiso: permiso })
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    editar: async (req, res) => {
+        try {
+            await db.Avisos.update({ ...req.body }, { where: { id: req.params.permiso } })
+        } catch (error) {
+            console.log(error);
+        }
         return res.redirect("/")
     },
 
 
-    eliminar: (req, res) => {
-        const permisos = leerPermisos()
-        console.log(req.params.permiso)
-        db.Avisos.destroy({where:{id:req.params.permiso}})
-
+    eliminar: async (req, res) => {
+        try {
+            await db.Avisos.destroy({ where: { id: req.params.permiso } })
+        } catch (error) {
+            console.log(error);
+        }
         return res.redirect("/")
     },
-    
-    activar: (req, res) => {
-        const permisos = leerPermisos()
-        const permisoEliminar = permisos.find(permiso => permiso.permiso == req.params.permiso);
-        permisoEliminar.estado = null
-        
-        escribirPermisos(permisos)
-
-        return  res.redirect("/")
+    restore: async (req, res) => {
+        try {
+            await db.Avisos.restore({ where: { id: req.params.permiso } })
+        } catch (error) {
+            console.log(error);
+        }
+        return res.redirect("/")
     },
 
-    permisos: (req, res) => {
-        const permisos = leerPermisos().filter(permiso=>permiso.estado!="BAJA")
-         return res.send(permisos)
-    },
 
 }
