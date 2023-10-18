@@ -12,9 +12,7 @@ module.exports = (sequelize, dataTypes) => {
         direccion: {
             type: dataTypes.STRING
         },
-        aduana: {
-            type: dataTypes.TINYINT
-        },
+       
         localidad: {
             type: dataTypes.STRING
         },
