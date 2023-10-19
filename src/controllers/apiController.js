@@ -5,7 +5,7 @@ module.exports = {
     try {
       const currentDateAndTime = new Date();
 
-      const foundPermission = await db.Avisos.findOne({
+      const foundFile = await db.Avisos.findOne({
         where: {
           proximoAviso: {
             [Op.lt]: currentDateAndTime
@@ -13,12 +13,12 @@ module.exports = {
         }
       });
 
-      if (foundPermission) {
+      if (foundFile) {
 
         res.status(200).json({
           success: true,
           message: "Permiso encontrado",
-          permission: foundPermission
+          file: foundFile
         });
       } else {
 

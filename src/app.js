@@ -2,8 +2,9 @@ require('dotenv').config()
 const express = require("express");
 const path = require("path");
 const methodOverride = require('method-override');
-const port = 3000
 const mainRoute = require("./routes/mainRoute.js")
+
+const port = process.env.port||3000
 
 const app = express();
 
