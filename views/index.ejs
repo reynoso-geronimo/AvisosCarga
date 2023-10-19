@@ -3,10 +3,10 @@
 
 <%- include('./partials/head') %>
 
-<body>
-  <main class="main">
+<body class="flex-body">
+ 
     <%- include('./partials/nav') %>
-  <section>
+  <main>
     <table id="tabla">
       <tr>
         <th>LEGAJO</th>
@@ -29,9 +29,17 @@
           <td>
             <%= permiso.proximoAviso.toLocaleString() %>
           </td>
-          <td><%- permiso.estado %></td>
-
+          <td class="status-icon">
+            <% if (permiso.estado==='ok') { %>
+             <img src="./img/checkOk.svg" alt="">
+             <% } else if (permiso.estado==='error') { %>
+              <img src="./img/checkErro.svg" alt="">
+              <% } else { %>
+                <img src="./img/cogWheel.svg" alt="">
+            <% } %>
+         
           <td>
+          
             <form onsubmit="return confirm('SEGURO QUE QUIERES BORRAR EL PERMISO <%= permiso.permiso %>');"
               action="/eliminar/<%= permiso.id %>" method="post">
 
@@ -53,8 +61,8 @@
         </tr>
         <% }) %>
     </table>
-  </section>
-</main>
+  </main>
+
   <script src="/js/index.js"></script>
 </body>
 

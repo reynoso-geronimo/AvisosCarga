@@ -5,11 +5,11 @@
   font-family: 'Lato', sans-serif;
 }
 
-.main{
+.flex-body{
   display: flex;
   width: 100%;
 }
-.main section{
+.flex-body main{
   width: 100% ;
 }
 .sidebar{
@@ -72,6 +72,11 @@
   width: 100%;
   text-align: center;
 }
+#tabla td:first-child,
+#tabla th:first-child {
+  border-left:none;
+  
+}
 #tabla td,
 #tabla th {
   border: 1px solid #ddd;
@@ -79,6 +84,9 @@
 }
 #tabla tr:nth-child(even) {
   background-color: #f2f2f2;
+}
+#tabla tr:nth-child(odd) {
+  background-color: #ffffff;
 }
 #tabla tr:hover {
   background-color: #ddd;
@@ -94,18 +102,39 @@
   z-index: 10;
   border-top: none;
 }
-
+.status-icon img{
+  width: 40px;
+  height: 40px;
+}
 .form-nuevo {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  background-color: #afbeb977;
   align-items: center;
-  padding-top: 100px;
+  margin: auto;
+  margin-top: 100px;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid gray;
+  -webkit-box-shadow: 10px 10px 12px 1px rgba(0,0,0,0.61);
+-moz-box-shadow: 10px 10px 12px 1px rgba(0,0,0,0.61);
+box-shadow: 10px 10px 12px 1px rgba(0,0,0,0.61);
 }
 .form-nuevo input {
   margin-bottom: 10px;
-  width: 300px;
+  height: 40px;
+  width: 90%;
 }
+.form-nuevo button {
+  
+  width: 90%;
+}
+
+.form-nuevo .input-error {
+  border: 2px solid red;
+}
+
+
 .btn-action {
   width: 150px;
   height: 30px;
@@ -178,15 +207,4 @@ button span {
 
 .btn-action:active .icon svg {
   transform: scale(0.8);
-}
-.form-nuevo {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  align-items: center;
-  padding-top: 100px;
-}
-.form-nuevo input {
-  margin-bottom: 10px;
-  width: 300px;
 }

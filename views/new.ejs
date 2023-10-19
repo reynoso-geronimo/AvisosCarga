@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
-  <%- include('./partials/head') %>
-  <body >
-    <a href="/"><BUTton>VOLVER</BUTton></a>
-    <form class="form-nuevo" action="/nuevo" method="post">
-    <label for="permiso">PERMISO</label>
-    <input type="text" name="permiso" id="permiso" />
-    <label for="localidad">LOCALIDAD</label>
-    <input type="text" name="localidad" id="localidad" />
-    <label for="direccion">DIRECCION</label>
-    <input type="text" name="direccion" id="direccion" />
-    <label for="proximoAviso">PROXIMO AVISO</label>
-    <input type="datetime-local" name="proximoAviso" id="proximoAviso" />
-    <button type="submit">Agregar</button>
-  </form>
-  </body>
+
+<%- include('./partials/head') %>
+
+<body class="flex-body">
+ 
+    <%- include('./partials/nav') %>
+  <main>
+    <form class="form-nuevo" action="/nuevo" method="post" id="form">
+      <label for="permiso">PERMISO</label>
+      <input type="text" name="permiso" id="permiso" required maxlength="16" />
+      <label for="localidad">LOCALIDAD</label>
+      <input type="text" name="localidad" id="localidad" required/>
+      <label for="direccion">DIRECCION</label>
+      <input type="text" name="direccion" id="direccion" required/>
+      <label for="proximoAviso">PROXIMO AVISO</label>
+      <input type="datetime-local" name="proximoAviso" id="proximoAviso"  required/>
+      <button type="submit" class="sidebar-btn"><span>Agregar</span></button>
+    </form>
+  </main>
+<script src="./js/new.js"></script>
+  
+</body>
+
 </html>
