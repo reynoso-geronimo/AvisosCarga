@@ -12,6 +12,22 @@ document.addEventListener('DOMContentLoaded',()=>{
   location.reload()
 });
 
-const botones = document.querySelectorAll('.btn-action')
-console.log(botones)
+const btnEdit = document.querySelectorAll('.btn-edit-a')
+  btnEdit.forEach(btn => {
+    btn.addEventListener("click",()=>{
+      document.getElementById("spinner").classList.add("show");
+    })
+  });
+   
+    const btnDelete = document.querySelectorAll('#delete-file')
+    btnDelete.forEach(btn => {
+      btn.addEventListener("submit",()=>{
+        document.getElementById("spinner").classList.add("show");
+      })
+    });
+    
+
 })
+window.addEventListener("unload", () => {
+  btnEdit.removeEventListener("click", showSpinner);
+});

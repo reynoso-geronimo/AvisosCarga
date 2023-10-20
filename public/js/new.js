@@ -30,3 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 })
+window.addEventListener("unload", () => {
+    btnEdit.removeEventListener("click", showSpinner);
+  });

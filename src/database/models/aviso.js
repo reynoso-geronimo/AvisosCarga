@@ -21,6 +21,10 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.DATE
         
         },
+        ultimoAviso: {
+            type: dataTypes.DATE
+        
+        },
         estado: {
             type: dataTypes.STRING
         },

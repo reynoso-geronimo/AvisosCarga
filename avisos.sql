@@ -11,6 +11,7 @@ CREATE TABLE `Avisos`(
     `localidad` VARCHAR(255) NOT NULL,
     `direccion` VARCHAR(255) NOT NULL,
     `proximoAviso` DATETIME NOT NULL,
+    `ultimoAviso` DATETIME,
     `createdAt` DATETIME,
     `updatedAt` DATETIME,
     `deletedAt` DATETIME,
