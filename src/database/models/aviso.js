@@ -61,6 +61,10 @@ module.exports = (sequelize, dataTypes) => {
         console.log("Updating record");
         Aviso.emitChange({ event: "update", aviso });
     });
+    Aviso.afterUpdate((aviso, options) => {
+        console.log("Updating record");
+        Aviso.emitChange({ event: "update", aviso });
+    });
     
     Aviso.afterBulkDestroy((aviso, options) => {
         console.log("Deleting record");

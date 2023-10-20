@@ -59,16 +59,14 @@ module.exports = {
   },
   setStatus: async (req, res) => {
     try {
-      const permisoId = req.params.permiso;
-
-      const updatedPermiso = await db.Avisos.update({ ...req.body,ultimoAviso:new Date() }, { where: { id: permisoId } });
-      if (updatedPermiso[0] > 0) {
-
+      
+      const permiso =await db.Avisos.findByPk(req.params.permiso)
+      if(!permiso) res.status(404).json({ success: false, message: "No se encontró el permiso con el ID proporcionado" });
+      permiso.estado =req.body.estado
+      if(req.body.estado==="ok")permiso.ultimoAviso= new Date()
+        await permiso.save()
         res.status(200).json({ success: true, message: "Permiso actualizado con éxito" });
-      } else {
-
-        res.status(404).json({ success: false, message: "No se encontró el permiso con el ID proporcionado" });
-      }
+      
     } catch (error) {
       console.error(error);
       res.status(500).json({ success: false, message: "Error interno del servidor" });
