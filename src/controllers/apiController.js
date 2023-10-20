@@ -7,7 +7,7 @@ module.exports = {
 
       const foundFile = await db.Avisos.findOne({
         where: {[Op.or]: [
-          {ultimoAviso: {[Op.lt]: currentDateAndTime}},
+          {proximoAviso: {[Op.lt]: currentDateAndTime}},
           {ultimoAviso: {[Op.is]: null}},
         ]}
       });
