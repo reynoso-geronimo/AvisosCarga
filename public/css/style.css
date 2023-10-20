@@ -134,7 +134,63 @@ box-shadow: 10px 10px 12px 1px rgba(0,0,0,0.61);
   border: 2px solid red;
 }
 
+.btn-submit {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #34974d;
+  background-color: #3aa856;
+}
 
+.btn-submit, .btn-submit__icon, .btn-submit__text {
+  transition: all 0.3s;
+}
+
+.btn-submit .btn-submit__text {
+  transform: translateX(100px);
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn-submit .btn-submit__icon {
+  position: absolute;
+  transform: translateX(210px);
+  height: 100%;
+  width: 39px;
+  background-color: #34974d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-submit .svg {
+  width: 30px;
+  stroke: #fff;
+}
+
+.btn-submit:hover {
+  background: #34974d;
+}
+
+.btn-submit:hover .btn-submit__text {
+  color: transparent;
+}
+
+.btn-submit:hover .btn-submit__icon {
+  width: 148px;
+  transform: translateX(50px);
+}
+
+.btn-submit:active .btn-submit__icon {
+  background-color: #2e8644;
+}
+
+.btn-submit:active {
+  border: 1px solid #2e8644;
+}
 .btn-action {
   width: 150px;
   height: 30px;
@@ -207,4 +263,45 @@ button span {
 
 .btn-action:active .icon svg {
   transform: scale(0.8);
+}
+
+
+#spinner {
+  /* (A1) COVER FULL SCREEN */
+  position: fixed;
+  top: 0; left: 0; z-index: 999;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.2s;
+ 
+  /* (A2) CENTER SPINNER */
+  display: flex;
+  align-items: center; justify-content: center;
+ 
+  /* (A3) HIDE BY DEFAULT */
+  visibility: hidden; opacity: 0;
+}
+ 
+/* (A4) SHOW SPINNER */
+#spinner.show { visibility: visible; opacity: 1; }
+ 
+.square-10 {
+  width:85px;
+  height:50px;
+  --g1:conic-gradient(from  90deg at left   3px top   3px,#0000 90deg,#fff 0);
+  --g2:conic-gradient(from -90deg at bottom 3px right 3px,#0000 90deg,#fff 0);
+  background:var(--g1),var(--g1),var(--g1), var(--g2),var(--g2),var(--g2);
+  background-position:left,center,right;
+  background-repeat:no-repeat;
+  animation:s10 1s infinite alternate;
+}
+@keyframes s10 {
+  0%,
+  2%   {background-size:25px 50% ,25px 50% ,25px 50%}
+  20%  {background-size:25px 25% ,25px 50% ,25px 50%}
+  40%  {background-size:25px 100%,25px 25% ,25px 50%}
+  60%  {background-size:25px 50% ,25px 100%,25px 25%}
+  80%  {background-size:25px 50% ,25px 50% ,25px 100%}
+  98%,
+  100% {background-size:25px 50% ,25px 50% ,25px 50%}
 }

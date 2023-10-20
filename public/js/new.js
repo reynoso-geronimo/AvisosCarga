@@ -11,19 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
         const selectedDateTime = new Date(dateTime.value);
         const dateNow = new Date();
-        let errors= false
+        let errors = false
         e.preventDefault()
         if (!regex.test(permiso.value)) {
             permiso.classList.add('input-error')
-            errors=true
+            errors = true
         } if (selectedDateTime < dateNow) {
             dateTime.classList.add('input-error')
-            errors=true
-        } 
+            errors = true
+        }
 
-           !errors&&form.submit()
+        if (!errors) {
+            form.submit();
+            document.getElementById("spinner").classList.add("show");
+        }
 
-        
 
     })
 
