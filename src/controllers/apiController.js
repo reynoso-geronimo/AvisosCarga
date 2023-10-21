@@ -35,21 +35,24 @@ module.exports = {
       });
 
       if (foundFile) {
-
-        const notice = new Date(foundFile.proximoAviso);
+        const currentDate = new Date()
+        let notice = new Date(foundFile.proximoAviso);
+        if (notice < currentDate) {
+          notice = currentDate;
+        }
         
+       
+        notice.setMinutes(notice.getMinutes() + 5);
         const formattedNoticeDate = notice.toLocaleString(undefined, {
           day: '2-digit',
           month: '2-digit',
           year: 'numeric',
         });
-        const formattedNoticeTime = notice.toLocaleString(undefined, {
-          hour: '2-digit',
-          minute: '2-digit',
-          timeZone: 'UTC'
-        });
+        
+        const formattedNoticeTime = notice.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false });
         const file = {
           id: foundFile.id,
+          notice:notice,
           noticeDate: formattedNoticeDate,
           noticeTime: formattedNoticeTime,
           fileName: foundFile.permiso,
@@ -87,7 +90,7 @@ module.exports = {
       permiso.estado =req.body.estado
       if(req.body.estado==="ok"){
         permiso.ultimoAviso= new Date()
-        const nextDate = new Date(permiso.proximoAviso);
+        const nextDate = new Date(req.body.notice);
         nextDate.setDate(nextDate.getDate() + 1);
         permiso.proximoAviso = new Date(nextDate)
       }
