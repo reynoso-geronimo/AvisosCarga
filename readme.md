@@ -42,10 +42,15 @@ Para configurar la base de datos, sigue estos pasos:
 Asegúrate de configurar las variables de entorno necesarias para la aplicación. Debes crear un archivo .env en el directorio raíz del proyecto y configurar las siguientes variables:
 
 DB_NAME 
+
 DB_USER 
+
 DB_PASS 
+
 DB_PORT
+
 DB_HOST 
+
 PORT
 
 ##
