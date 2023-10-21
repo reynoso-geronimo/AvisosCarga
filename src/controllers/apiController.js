@@ -52,7 +52,7 @@ module.exports = {
         const formattedNoticeTime = notice.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false });
         const file = {
           id: foundFile.id,
-          notice:notice,
+          notice:notice.toString(),
           noticeDate: formattedNoticeDate,
           noticeTime: formattedNoticeTime,
           fileName: foundFile.permiso,
