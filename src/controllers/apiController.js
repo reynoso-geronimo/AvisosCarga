@@ -87,9 +87,13 @@ module.exports = {
       permiso.estado =req.body.estado
       if(req.body.estado==="ok"){
         permiso.ultimoAviso= new Date()
-        permiso.proximoAviso.setHours(permiso.proximoAviso.getHours() + 24);
+        const nextDate = new Date(permiso.proximoAviso);
+        nextDate.setDate(nextDate.getDate() + 1);
+        permiso.proximoAviso = new Date(nextDate)
       }
+     
         await permiso.save()
+        
         res.status(200).json({ success: true, message: "Permiso actualizado con éxito" });
       
     } catch (error) {
