@@ -3,13 +3,35 @@ const db = require("../database/models")
 module.exports = {
   findFirstEligible: async (req, res) => {
     try {
-      const currentDateAndTime = new Date();
-
+      const expiredNotice = new Date();
+      expiredNotice.setHours(expiredNotice.getHours() - 24);
       const foundFile = await db.Avisos.findOne({
-        where: {[Op.or]: [
-          {proximoAviso: {[Op.lt]: currentDateAndTime}},
-          {ultimoAviso: {[Op.is]: null}},
-        ]}
+        where: {
+          [Op.and]: [
+            {
+              [Op.or]: [
+                {
+                  estado: "ok",
+                },
+                {
+                  estado: null,
+                },
+              ],
+            },
+            {
+              [Op.or]: [
+                {
+                  ultimoAviso: {
+                    [Op.lt]: expiredNotice,
+                  },
+                },
+                {
+                  ultimoAviso: null,
+                },
+              ],
+            },
+          ],
+        },
       });
 
       if (foundFile) {
@@ -63,7 +85,10 @@ module.exports = {
       const permiso =await db.Avisos.findByPk(req.params.permiso)
       if(!permiso) res.status(404).json({ success: false, message: "No se encontró el permiso con el ID proporcionado" });
       permiso.estado =req.body.estado
-      if(req.body.estado==="ok")permiso.ultimoAviso= new Date()
+      if(req.body.estado==="ok"){
+        permiso.ultimoAviso= new Date()
+        permiso.proximoAviso.setHours(permiso.proximoAviso.getHours() + 24);
+      }
         await permiso.save()
         res.status(200).json({ success: true, message: "Permiso actualizado con éxito" });
       

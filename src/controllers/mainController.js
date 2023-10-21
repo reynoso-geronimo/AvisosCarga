@@ -36,7 +36,7 @@ module.exports = {
     },
     editar: async (req, res) => {
         try {
-            await db.Avisos.update({ ...req.body }, { where: { id: req.params.permiso } })
+            await db.Avisos.update({ ...req.body,estado:null }, { where: { id: req.params.permiso } })
         } catch (error) {
             console.log(error);
         }
