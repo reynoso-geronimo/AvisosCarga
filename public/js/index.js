@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+  /*if ('serviceWorker' in navigator && 'PushManager' in window) {
+    let deferredPrompt;
+    
+    // Show a button or banner to prompt the user for installation
+    const button = document.createElement('button');
+    button.textContent = 'Instalar';
+    button.className = 'sidebar-btn';
+    document.querySelector('.nav-container').appendChild(button);
+
+
+  
+      
+      
+        
+  }*/
+      
+
+
   // Solicitar permiso de notificación cuando se carga la página
   Notification.requestPermission();
 
