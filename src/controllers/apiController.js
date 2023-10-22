@@ -89,10 +89,13 @@ module.exports = {
       if(!permiso) res.status(404).json({ success: false, message: "No se encontró el permiso con el ID proporcionado" });
       permiso.estado =req.body.estado
       if(req.body.estado==="ok"){
-        permiso.ultimoAviso= new Date()
-        const nextDate = new Date(req.body.notice);
-        nextDate.setDate(nextDate.getDate() + 1);
-        permiso.proximoAviso = new Date(nextDate)
+        if (req.body.notice) {
+          permiso.ultimoAviso= new Date()
+          const nextDate = new Date(req.body.notice);
+          nextDate.setDate(nextDate.getDate() + 1);
+          permiso.proximoAviso = new Date(nextDate)
+        }
+       
       }
      
         await permiso.save()
