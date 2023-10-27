@@ -4,7 +4,7 @@ module.exports = {
   findFirstEligible: async (req, res) => {
     try {
       const expiredNotice = new Date();
-      expiredNotice.setHours(expiredNotice.getHours() - 24);
+      //expiredNotice.setHours(expiredNotice.getHours() - 24);
       const foundFile = await db.Avisos.findOne({
         where: {
           [Op.and]: [
@@ -21,7 +21,7 @@ module.exports = {
             {
               [Op.or]: [
                 {
-                  ultimoAviso: {
+                  proximoAviso: {
                     [Op.lt]: expiredNotice,
                   },
                 },
@@ -33,7 +33,7 @@ module.exports = {
           ],
         },
       });
-
+     
       if (foundFile) {
         const currentDate = new Date()
         let notice = new Date(foundFile.proximoAviso);
