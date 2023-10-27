@@ -14,8 +14,8 @@
     <input type="text" name="direccion" id="direccion" value="<%= permiso.direccion %>"/>
     <label for="proximoAviso">PROXIMO AVISO</label>
     <input type="datetime-local" name="proximoAviso" id="proximoAviso" value=<% if (permiso.proximoAviso instanceof Date && !isNaN(permiso.proximoAviso.valueOf())) { %>
-       <%= permiso.proximoAviso.toISOString().slice(0, 16) %>
-    <% } %>/>
+      <%= (new Date(permiso.proximoAviso.getTime() - (new Date().getTimezoneOffset() * 60000))).toISOString().slice(0, 16) %>
+  <% } %>/>
     <button type="submit">EDITAR</button>
   </form>
 </main>
