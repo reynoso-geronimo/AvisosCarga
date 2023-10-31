@@ -6,7 +6,7 @@
 <body class="flex-body">
  
     <%- include('./partials/nav') %>
-  <main>
+  <main class="form-container">
     <form class="form-nuevo" action="/nuevo" method="post" id="form">
       <label for="permiso">PERMISO</label>
       <input type="text" name="permiso" id="permiso" required maxlength="16" />
@@ -18,8 +18,8 @@
       <input type="datetime-local" name="proximoAviso" id="proximoAviso"  required/>
       
       <button type="submit" class="btn-submit">
-        <span class="btn-submit__text">Agregar</span>
-        <span class="btn-submit__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
+        <span class="btn-submit__text">AGREGAR</span>
+        <span class="btn-submit__icon"><img src="/img/plus.svg" alt=""></span>
       </button>
     </form>
 

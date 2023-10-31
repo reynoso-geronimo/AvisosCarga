@@ -5,8 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const dateTime = document.getElementById("proximoAviso");
     const form = document.getElementById("form")
     const regex = /^(\d{2})(\d{3})([A-Za-z]{2}\d{2})(\d{6}[A-Za-z])$/;
-
-
+    permiso.addEventListener("change",()=>{
+        permiso.classList.remove('input-error')
+    })
+    dateTime.addEventListener("change",()=>{
+        dateTime.classList.remove('input-error')
+    })
 
     form.addEventListener('submit', (e) => {
         const selectedDateTime = new Date(dateTime.value);
