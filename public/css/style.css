@@ -104,7 +104,7 @@
 }
 .form-container {
   background-image: url("/img/World\ Map.svg");
-  background-size:contain;
+  background-size:cover;
   background-position-y:center;
   min-height: 100vh;
 }
