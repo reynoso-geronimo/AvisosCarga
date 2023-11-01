@@ -8,7 +8,9 @@ Este proyecto es un sistema de seguimiento y generación de avisos de carga dise
 
 - **Generación de Avisos de Carga:** La aplicación brinda la informacion para los avisos de carga asociados a los despachos aduaneros, lo que facilita la gestión de la logística.
 
-- **API REST:** La aplicación incluye dos endpoints importantes para la integración con otros sistemas, como Power Automate Desktop:
+- **API REST:** La aplicación incluye dos endpoints importantes para la integración con otros sistemas, como Power Automate Desktop, o el bot desarrollado en Python:
+- 
+https://github.com/reynoso-geronimo/Bot-Avisos-de-carga
   - **Endpoint 1:** Proporciona información necesaria para generar el próximo aviso de carga en la cola.
   - **Endpoint 2:** Permite guardar el resultado del aviso de carga, indicando si se generó correctamente o si se produjo un error, además de almacenar información sobre el próximo aviso.
 
