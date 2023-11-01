@@ -376,9 +376,38 @@ button span {
     background-size: 25px 50%, 25px 50%, 25px 50%;
   }
 }
-.active-error{
+.error-warning{
   position: fixed;
   left: 30px;
   bottom:30px;
   z-index: 100000;
+  display: none;
+}
+.error-warning img{
+  background-color: white;
+  border-radius: 100%;
+  padding: 5px;
+  animation: hithere 1s ease infinite;
+}
+.error-warning__text{
+  position: relative;
+  font-size: 32px;
+  left: 40px;
+  bottom: 20px;
+  background-color: white;
+  border: solid 5px red;
+  border-radius: 100%;
+  font-weight: 800;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+
+
+}
+@keyframes hithere {
+  30% { transform: scale(1.2); }
+  40%, 60% { transform: rotate(-20deg) scale(1.2); }
+  50% { transform: rotate(20deg) scale(1.2); }
+  70% { transform: rotate(0deg) scale(1.2); }
+  100% { transform: scale(1); }
 }

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("La conexión se ha establecido.");
   });
   eventSource.addEventListener("message", (event) => {
-  
+
     const data = JSON.parse(event.data);
     console.log("Se ha actualizado la información:", data.data.aviso);
 
@@ -36,7 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 const errors = document.querySelectorAll('img[alt="error"]')
-console.log(errors.length)
+localStorage.setItem('warning', 0)
+if (errors.length > 0) {
+  localStorage.setItem('warning', errors.length)
+} 
+ 
 
 window.addEventListener("unload", () => {
   btnEdit.forEach(btn => {
