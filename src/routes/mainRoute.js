@@ -28,11 +28,11 @@ router.get("/", mainController.index);
 router.get("/historial", mainController.history);
 
 
-router.get("/nuevo",mainController.new)
-router.post("/nuevo",mainController.agregar)
-router.get("/editar/:permiso", mainController.editarForm);
-router.post("/editar/:permiso", mainController.editar);
-router.post("/eliminar/:permiso", mainController.eliminar);
+router.get("/nuevo",mainController.newForm)
+router.post("/nuevo",mainController.newProcess)
+router.get("/editar/:permiso", mainController.editForm);
+router.post("/editar/:permiso", mainController.editProcess);
+router.post("/eliminar/:permiso", mainController.delete);
 router.get("/restore/:permiso", mainController.restore);
 
 

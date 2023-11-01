@@ -12,10 +12,10 @@ module.exports = {
         });
         return res.render("history", { permisos: permisosBorrados })
     },
-    new: (req, res) => {
+    newForm: (req, res) => {
         return res.render("new")
     },
-    agregar: async (req, res) => {
+    newProcess: async (req, res) => {
 
         try {
             await db.Avisos.create(req.body)
@@ -24,17 +24,17 @@ module.exports = {
 
         }
     },
-    editarForm: async (req, res) => {
+    editForm: async (req, res) => {
         try {
 
             const permiso = await db.Avisos.findByPk(req.params.permiso)
 
-            return res.render("editar", { permiso: permiso })
+            return res.render("edit", { permiso: permiso })
         } catch (error) {
             console.log(error);
         }
     },
-    editar: async (req, res) => {
+    editProcess: async (req, res) => {
         try {
             await db.Avisos.update({ ...req.body,estado:null }, { where: { id: req.params.permiso } })
         } catch (error) {
@@ -44,7 +44,7 @@ module.exports = {
     },
 
 
-    eliminar: async (req, res) => {
+    delete: async (req, res) => {
         try {
             await db.Avisos.destroy({ where: { id: req.params.permiso } })
         } catch (error) {

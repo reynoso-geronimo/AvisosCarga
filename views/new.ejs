@@ -6,14 +6,18 @@
     <%- include('./partials/nav') %>
     <main class="form-container">
       <form class="form-nuevo" action="/nuevo" method="post" id="form">
-        <label for="permiso">PERMISO</label>
+       
         <input type="text" name="permiso" id="permiso" required maxlength="16"/>
-        <label for="localidad">LOCALIDAD</label>
+        <label for="permiso">PERMISO</label>
+        
         <input type="text" name="localidad" id="localidad" required />
-        <label for="direccion">DIRECCION</label>
+        <label for="localidad">LOCALIDAD</label>
+        
         <input type="text" name="direccion" id="direccion" required />
-        <label for="proximoAviso">PROXIMO AVISO</label>
+        <label for="direccion">DIRECCION</label>
+       
         <input type="datetime-local" name="proximoAviso" id="proximoAviso" required/>
+        <label for="proximoAviso">PROXIMO AVISO</label>
         <button type="submit" class="btn-submit">
           <span class="btn-submit__text">AGREGAR</span>
           <span class="btn-submit__icon"><img src="/img/plus.svg" alt=""/></span>
