@@ -35,7 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
+const errors = document.querySelectorAll('img[alt="error"]')
+console.log(errors.length)
 
 window.addEventListener("unload", () => {
   btnEdit.forEach(btn => {

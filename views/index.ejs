@@ -31,11 +31,11 @@
           </td>
           <td class="status-icon">
             <% if (permiso.estado==='ok') { %>
-             <img src="./img/checkOk.svg" alt="">
+             <img src="./img/checkOk.svg" alt="ok">
              <% } else if (permiso.estado==='error') { %>
-              <img src="./img/checkErro.svg" alt="">
+              <img src="./img/checkErro.svg" alt="error">
               <% } else { %>
-                <img class="processing" src="./img/processing.svg" alt="">
+                <img class="processing" src="./img/processing.svg" alt="pending">
             <% } %>
          
           <td>
@@ -55,6 +55,9 @@
   </main>
   <div id="spinner">
     <div class="square-10"></div>
+  </div>
+  <div class="active-error">
+    <img src="/img/warning.svg" alt="">
   </div>
   <script src="/js/index.js"></script>
 </body>

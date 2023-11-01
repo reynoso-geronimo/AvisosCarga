@@ -376,3 +376,9 @@ button span {
     background-size: 25px 50%, 25px 50%, 25px 50%;
   }
 }
+.active-error{
+  position: fixed;
+  left: 30px;
+  bottom:30px;
+  z-index: 100000;
+}
