@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!errors) {
-            form.submit();
             document.getElementById("spinner").classList.add("show");
+            form.submit();  
         }
 
 

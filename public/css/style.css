@@ -26,7 +26,6 @@
 
 .sidebar-btn {
   display: inline-block;
-
   background-color: #3d405b;
   border: none;
   color: #ffffff;
@@ -77,6 +76,8 @@
 #tabla td,
 #tabla th {
   border: 1px solid #ddd;
+  font-size: 16px;
+  font-weight:600;
 }
 #tabla tr:nth-child(even) {
   background-color: #f2f2f2;
@@ -91,7 +92,7 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: #04aa6d;
+  background-color: #7c3c00;
   color: white;
   position: sticky;
   top: 0;
@@ -105,7 +106,9 @@
 .form-container {
   background-image: url("/img/World\ Map.svg");
   background-size:cover;
-  background-position-y:center;
+  background-position-y:bottom;
+  background-position-x:center;
+
   min-height: 100vh;
 }
 .form-nuevo {

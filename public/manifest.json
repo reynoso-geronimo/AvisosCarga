@@ -1,21 +1,32 @@
 {
-    "name": "Avisos de carga",
-    "short_name": "Avisos",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#04aa6d",
-    "splash": {
-        "src": "./img/loading.png", 
-        "sizes": "512x512",
-        "type": "image/png"
-      },
-    "icons": [
+  "theme_color": "#f69435",
+  "background_color": "#f69435",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "Avisos de carga",
+  "short_name": "Avisos",
+  "description": "Gestos de avisos de carga",
+  "icons": [
       {
-        "src": "./img/icon.png",
-        "sizes": "192x192",
-        "type": "image/png"
-       
+          "src": "/img/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+      },
+      {
+          "src": "/img/icon-256x256.png",
+          "sizes": "256x256",
+          "type": "image/png"
+      },
+      {
+          "src": "/img/icon-384x384.png",
+          "sizes": "384x384",
+          "type": "image/png"
+      },
+      {
+          "src": "/img/icon-512x512.png",
+          "sizes": "512x512",
+          "type": "image/png"
       }
-    ]
-  }
+  ]
+}
