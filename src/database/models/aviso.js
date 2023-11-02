@@ -56,7 +56,10 @@ module.exports = (sequelize, dataTypes) => {
         console.log("Creating record");
         Aviso.emitChange({ event: "create", aviso });
     });
-    
+    Aviso.afterBulkCreate((aviso, options) => {
+        console.log("Creating record");
+        Aviso.emitChange({ event: "create", aviso });
+    });
     Aviso.afterBulkUpdate((aviso, options) => {
         console.log("Updating record");
         Aviso.emitChange({ event: "update", aviso });

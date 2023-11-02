@@ -6,10 +6,15 @@
     <%- include('./partials/nav') %>
     <main class="form-container">
       <form class="form-nuevo" action="/nuevo" method="post" id="form">
-       
-        <input type="text" name="permiso" id="permiso" required maxlength="16"/>
-        <label for="permiso">PERMISO</label>
-        
+   
+        <input class="permiso" type="text" name="permiso" id="permiso-1" required maxlength="16"/>
+        <label for="permiso-1">PERMISO</label>
+        <button type="button" class="btn-add-permiso" onclick="agregarCampoPermiso()">
+          Agregar Permiso
+      </button>
+      <button  hidden type="button" class="btn-remove-permiso" onclick="quitarUltimoCampoPermiso()">
+        Quitar Último Permiso
+    </button>
         <input type="text" name="localidad" id="localidad" required />
         <label for="localidad">LOCALIDAD</label>
         
