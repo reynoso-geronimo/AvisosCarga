@@ -172,18 +172,31 @@
   color: #fff;
 }
 
-.form-nuevo button {
-  width: 90%;
-  font-size: 16px;
-}
 
 .form-nuevo .input-error {
   border: 2px solid red;
 }
+.add-input{
+  position: relative;
+  top:-15px;
+}
+.btn-add-permiso, .btn-remove-permiso{
+  height: 40px;
+  width: 80px;
+  border-radius: 20px;
+  font-size:28px;
+  font-weight: 900;
+  padding-bottom: 5px;
+
+
+}
+.btn-add-permiso:hover, .btn-remove-permiso:hover{
+  cursor: pointer;
+}
 
 .btn-submit {
+  width: 90%;
   position: relative;
-  width: 150px;
   height: 40px;
   cursor: pointer;
   display: flex;
@@ -201,6 +214,7 @@
 .btn-submit .btn-submit__text {
   margin: auto;
   color: #fff;
+  font-size: 16px;
   font-weight: 600;
 }
 

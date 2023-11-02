@@ -55,9 +55,9 @@ function agregarCampoPermiso() {
     label.setAttribute("for", "permiso-" + contadorCamposPermiso);
     label.textContent = "PERMISO " + contadorCamposPermiso;
 
-    const btnAddPermiso = document.querySelector(".btn-add-permiso");
-    btnAddPermiso.parentElement.insertBefore(input, btnAddPermiso);
-    btnAddPermiso.parentElement.insertBefore(label, btnAddPermiso);
+    const addInput = document.querySelector(".add-input");
+    addInput.parentElement.insertBefore(input, addInput);
+    addInput.parentElement.insertBefore(label, addInput);
 
     // Mostrar el botón de "Quitar Último Permiso"
     btnRemovePermiso.style.display = "inline";

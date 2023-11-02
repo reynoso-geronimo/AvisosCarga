@@ -9,12 +9,14 @@
    
         <input class="permiso" type="text" name="permiso" id="permiso-1" required maxlength="16"/>
         <label for="permiso-1">PERMISO</label>
-        <button type="button" class="btn-add-permiso" onclick="agregarCampoPermiso()">
-          Agregar Permiso
-      </button>
-      <button  hidden type="button" class="btn-remove-permiso" onclick="quitarUltimoCampoPermiso()">
-        Quitar Último Permiso
-    </button>
+        <div class="add-input">
+          <button type="button" class="btn-add-permiso" onclick="agregarCampoPermiso()">
+           <p>+</p>
+          </button>
+          <button  hidden type="button" class="btn-remove-permiso" onclick="quitarUltimoCampoPermiso()">
+            <p>-</p>
+          </button>
+        </div>
         <input type="text" name="localidad" id="localidad" required />
         <label for="localidad">LOCALIDAD</label>
         
