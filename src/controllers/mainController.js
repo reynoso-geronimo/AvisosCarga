@@ -1,5 +1,5 @@
 const db = require("../database/models")
-
+const { validationResult } = require("express-validator");
 module.exports = {
     index: async (req, res) => {
         const permisos = await db.Avisos.findAll()
@@ -16,7 +16,11 @@ module.exports = {
         return res.render("new")
     },
     newProcess: async (req, res) => {
-        console.log(req.body)
+        const errors = validationResult(req);
+   
+        if (!errors.isEmpty()) {
+            return res.redirect("/nuevo")
+        }
         const fileNames = Array.isArray(req.body.permiso)
             ? req.body.permiso
             : [req.body.permiso];

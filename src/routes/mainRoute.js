@@ -3,6 +3,7 @@ const db = require("../database/models")
 const router = express.Router()
 const mainController = require('../controllers/mainController.js');
 const apiController = require('../controllers/apiController.js');
+const { fileValidation } = require('../middlewares/validations');
 
 
 
@@ -29,9 +30,9 @@ router.get("/historial", mainController.history);
 
 
 router.get("/nuevo",mainController.newForm)
-router.post("/nuevo",mainController.newProcess)
+router.post("/nuevo",fileValidation,mainController.newProcess)
 router.get("/editar/:permiso", mainController.editForm);
-router.post("/editar/:permiso", mainController.editProcess);
+router.post("/editar/:permiso", fileValidation,mainController.editProcess);
 router.post("/eliminar/:permiso", mainController.delete);
 router.get("/restore/:permiso", mainController.restore);
 
