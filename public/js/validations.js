@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         const selectedDateTime = new Date(dateTime.value);
         const dateNow = new Date();
+        dateNow.setHours(dateNow.getHours() + 2)
         let errors = false
         e.preventDefault()
         inputs.forEach((input) => {
