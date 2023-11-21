@@ -69,8 +69,8 @@ module.exports = {
         });
       } else {
 
-        res.status(404).json({
-          success: false,
+        res.status(204).json({
+          success: true,
           message: "No se encontraron permisos para dar aviso."
         });
       }
